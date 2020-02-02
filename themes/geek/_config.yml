@@ -1,0 +1,19 @@
+logo_title: Marwin's Blog
+
+style: black
+
+favicon: /favicon.ico
+
+menu:
+  作品: /project
+  友联: /links
+  关于: /about
+  Github: https://github.com/marwin233
+
+# 做了域名限制，请改成自己的 KEY
+valine:
+  appId: WyRGpPKmnK3RoAVMO2BsfcdO-gzGzoHsz
+  appKey: UVjpWjfcDf5Ku0m6O978EmDh
+
+highlight:
+  enable: false
