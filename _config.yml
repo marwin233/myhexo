@@ -99,3 +99,13 @@ theme: geek
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: ''
+
+# RSS
+feed:
+    type: rss2
+    path: rss2.xml
+    limit: false
+    hub:
+    content: true
+    content_limit: false
+    content_limit_delim: ' '

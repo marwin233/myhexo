@@ -7,9 +7,8 @@ favicon: /favicon.ico
 menu:
   作品: /project
   关于: /about
+  RSS: /rss2.xml
   Github: https://github.com/marwincn
-
-rss: /atom.xml
 
 # 做了域名限制，请改成自己的 KEY
 valine:
