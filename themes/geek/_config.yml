@@ -2,8 +2,6 @@ logo_title: Marwin's Blog
 
 style: black
 
-favicon: /favicon.ico
-
 menu:
   作品: /project
   关于: /about
@@ -17,3 +15,5 @@ valine:
 
 highlight:
   enable: false
+
+favicon: /favicon.png
