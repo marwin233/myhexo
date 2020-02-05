@@ -98,7 +98,9 @@ theme: geek
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:marwincn/blog.git
+  branch: gh-pages
 
 # RSS
 feed:
