@@ -3,13 +3,15 @@ title: 使用hexo搭建博客
 date: 2020-02-05 20:13:41
 tags:
 ---
-## 背景
+
+
+## 一、背景
 
 本来在自己的vps上自己写了一个博客，但是很多地方需要自己不断维护，自己写的前端也不太满意所以决定用框架搭一个静态博客部署在github page上，这样也省了在vps上到处迁移。
 
 我选择了人气比较高的Hexo，记录一下自己搭建的过程，作为官方文档的整理和补充。
 
-## 安装
+## 二、安装
 
 首先确认电脑里有git和npm （安装node.js即可）的支持，以下为macOS上使用homebrew安装，其他安装方式参考搜索引擎。
 
@@ -57,7 +59,7 @@ $ npm install
 
 找到选好的主题的github项目，将其clone到你新建的项目的themes目录下，这里的默认的一个主题是landscape。修改项目根目录下的`_config.yml`（项目配置文件，一般主题目录下也有一个`_config.yml`，请勿混淆），theme的值改为刚才clone的主题名称。到这里就可以将主题应用到项目上，其他配置参考每个主题的文档。
 
-## 部署
+## 三、部署
 
 根据github的规定，仓库名为`<your github name>.github.io`时默认该仓库的master分支为github page部署分支，此时页面的url为`https://<your github name>.github.io/index.html`。而其他命名的仓库可以指定一个分支，如gh-pages作为github page部署分支，此时页面的url为`https://<your github name>.github.io/repositorie-name/index.html`。
 
@@ -86,7 +88,7 @@ deploy:
 需要提前将本地ssh pubkey添加到github的`SSH keys`里，作为push命令的身份认证。然后只需一条命令就能将网站部署到服务器上：
 
 ```shell
-$ hexo clean && hexo deploy # clean渲染，delpoy部署
+$ hexo clean && hexo deploy
 ```
 
 ### 远程渲染
