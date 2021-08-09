@@ -16,6 +16,9 @@ tags:
 >3. 域名相同，协议不同，如http和https  
 
 了解了为什么要开启CORS后可以开始编写开启CORS的代码了。
+
+<!-- more --> 
+
 ## 2.Spring Boot配置里开启CORS
 
 springboot开启CORS只需在配置里添加CORS的支持，直接编写配置类即可：
