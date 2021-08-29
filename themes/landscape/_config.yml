@@ -2,6 +2,9 @@
 menu:
   Home: /
   Archives: /archives
+  About: /about
+  RSS: /rss2.xml
+  Github: https://github.com/marwincn
 rss: /atom.xml
 
 # Content
