@@ -13,8 +13,8 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://marwincn.github.io/blog
-root: /blog/
+url: https://marwincn.github.io/
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -99,8 +99,8 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:marwincn/blog.git
-  branch: gh-pages
+  repo: git@github.com:marwincn/marwincn.github.io.git
+  branch: main
 
 # RSS
 feed:
