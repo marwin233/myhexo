@@ -111,3 +111,6 @@ feed:
     content: true
     content_limit: false
     content_limit_delim: ' '
+
+sitemap:
+  path: sitemap.xml
