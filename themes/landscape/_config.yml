@@ -2,7 +2,7 @@
 menu:
   Home: /
   Archives: /archives
-  About: /about
+  # About: /about
   Github: https://github.com/marwincn
 rss: /rss2.xml
 
