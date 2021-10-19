@@ -4,13 +4,13 @@ date: 2019-04-07 11:19:33
 tags:
 ---
 
+# 一、为何要提供跨域资源服务
 
-## 1.为何要提供跨域资源服务
-
-最近在写的一个项目后端使用了springboot和springsecurity，前端使用Vue和axios（发送ajax）。为了实现前后端分离，后端要开启`CORS（跨站资源共享）`，保证后端能对不同站点下的前端提供服务。
+最近在写的一个项目后端使用了Spring Boot和Spring Security，前端使用Vue和axios（发送ajax）。为了实现前后端分离，前端和后端能部署在不同的域名下，后端要开启`CORS（跨站资源共享）`，保证后端接口能被不同域名下的前端正常请求。
 
 >由于浏览器的同源策略，跨域请求一般会被拒绝，导致ajax无法访问到后端资源。  
 >跨域的几种场景，可以判断自己的网站是否跨域：  
+>
 >1. 域名不同
 >2. 域名相同，端口不同
 >3. 域名相同，协议不同，如http和https  
@@ -19,9 +19,9 @@ tags:
 
 了解了为什么要开启CORS后可以开始编写开启CORS的代码了。
 
-## 2.Spring Boot配置里开启CORS
+# 二、Spring Boot配置里开启CORS
 
-springboot开启CORS只需在配置里添加CORS的支持，直接编写配置类即可：
+Spring Boot开启CORS只需在配置里添加CORS的支持，直接编写配置类即可：
 ```Java
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,7 +47,7 @@ public class CorsConfig {
     }
 }
 ```
-## 3.Spring Security配置
+# 三、Spring Security配置
 
 由于使用Spring Security后请求都会被它拦截，需要对security也进行配置：
 ```java
@@ -109,17 +109,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 }
 ```
-这里有两个坑。
-## 3.1设置CORS和CSRF
+这里有两个坑：
+## 设置CORS和CSRF
+
 一是，下面这一句必须要设置，否则请求会直接403 Forbidden
 ```
 http.cors().and().csrf().disable();
 ```
-## 3.2自定义登录处理器
+## 自定义登录处理器
 
 二是，SpringSecurity通常配置有`http.formLogin().successForwardUrl().failureForwardUrl()`这几个配置，但是这些配置都是基于服务器渲染页面的模式，在前后端分离项目中登录只用发送携带登录信息的ajax，服务器响应结果即可，开启这些跳转配置会使ajax无法正常获取响应。  
 
-自定义处理器，登录成功响应对应的结果的Json数据,写到`HttpServletResponse`中:
+所以要自定义处理器，登录成功响应对应的Json结果，写到`HttpServletResponse`中:
 ```java
 new AuthenticationSuccessHandler() {
     @Override
@@ -135,17 +136,13 @@ new AuthenticationSuccessHandler() {
 }
 ```
 
-## 4.前端设置
+# 四、前端设置
+
 在跨域请求的时候，通常会自动发送两个请求。第一个请求方法为OPTION，目的是探测后端是否支持跨域，如果支持跨域再发送真实请求。这里是自动发送不用自己编写代码。  
 
-然后在发送登录请求的时候，会遇到前端ajax发送了username和password参数，但是后端收不到参数而验证失败。这里的原因是，前端ajax比如axios通常以json格式发送数据，请求头中`content-type`为`application/json`，但是springsecurity的登录不支持这种格式所以导致错误。  
+然后在发送登录请求的时候，会遇到前端ajax发送了username和password参数，但是后端收不到参数而验证失败。这里的原因是，前端ajax比如axios通常以json格式发送数据，请求头中`content-type`为`application/json`，但是Spring Security的登录不支持这种格式所以找不到参数。  
 
-解决方法有两种，一是重写SpringSecurity的登录Filter，使其支持json类型数据，操作比较复杂网上有很多相关博客这里就不提了。二是在登录时前端设置数据格式为SpringSecurity支持的application/x-www-form-urlencoded，相关代码如下：
-```javascript
-let params = new URLSearchParams();
-params.append("username", username);
-params.append("password", password);
-this.axios.post(url, params);
-```
-## 5.总结
+解决方法有两种，一是重写Spring Security的登录Filter，使其支持json类型数据，操作比较复杂网上有很多相关博客这里就不提了。二是在登录时前端设置数据格式为SpringSecurity支持的`application/x-www-form-urlencoded`。
+# 五、总结
+
 至此CORS就已经开启，前端就可以愉快地使用ajax访问后端了。

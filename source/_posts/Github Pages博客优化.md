@@ -4,7 +4,7 @@ date: 2021-09-03
 tags:
 ---
 
-## 使用Github Action自动部署
+# 使用Github Action自动部署
 
 Github Action是Github提供的免费CI系统，利用Git Hooks可以在提交代码时触发自动化构建流程。对于我使用hexo搭建的博客来说，在我写完博客后push到Github就能触发自动hexo deploy发布博客。
 
@@ -66,7 +66,7 @@ jobs:
 
 ![截屏2021-09-03 22.07.23](https://i.loli.net/2021/09/03/HZVg8YOrvGB5Mwk.png)
 
-## CNAME到自定义域名
+# CNAME到自定义域名
 
 如果你正好有个域名，那么可以将该域名CNAME到Github Page实现通过自定义域名访问博客。
 
@@ -80,7 +80,7 @@ jobs:
 
 最终就可以使用自己的域名访问你的博客了。
 
-## Google Analytics博客访客分析
+# Google Analytics博客访客分析
 
 Google Analytics提供免费的网站访客分析，可以在官网https://analytics.google.com/创建媒体资源和应用，根据提示创建跟踪网站的代码：
 
